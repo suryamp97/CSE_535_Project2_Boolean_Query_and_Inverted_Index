@@ -63,10 +63,10 @@ class ProjectRunner:
             for line in tqdm(fp.readlines()):
                 doc_id, document = self.preprocessor.get_doc_id(line)
                 tokenized_document = self.preprocessor.tokenizer(document)
-                self.indexer.generate_inverted_index(doc_id, tokenized_document)
-        self.indexer.sort_terms()
-        self.indexer.add_skip_connections()
-        self.indexer.calculate_tf_idf()
+#                 self.indexer.generate_inverted_index(doc_id, tokenized_document)
+#         self.indexer.sort_terms()
+#         self.indexer.add_skip_connections()
+#         self.indexer.calculate_tf_idf()
 
     def sanity_checker(self, command):
         """ DO NOT MODIFY THIS. THIS IS USED BY THE GRADER. """
@@ -196,4 +196,4 @@ if __name__ == "__main__":
         this pre-loaded in memory index. """
     runner.run_indexer(corpus)
 
-    app.run(host="0.0.0.0", port=9999)
+    #app.run(host="0.0.0.0", port=9999)
