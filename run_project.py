@@ -76,7 +76,7 @@ class ProjectRunner:
                 else:
                     m_l, comparisons = self._merge(self.indexer.inverted_index[query_list[i-1]],self.indexer.inverted_index[query_list[i]],skip)
                     tot_comparisons += comparisons
-        print(m_l,tot_comparisons)
+        
         return m_l, tot_comparisons
 
     def _get_postings(self,term_):
