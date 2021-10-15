@@ -45,7 +45,7 @@ class ProjectRunner:
             Use appropriate parameters & return types.
             To be implemented."""
         postings_list = []
-        if term in self.indexer.inverted_index:
+        if term_ in self.indexer.inverted_index:
             postings_list=self.indexer.inverted_index[term_].traverse_list()
         raise postings_list
 
