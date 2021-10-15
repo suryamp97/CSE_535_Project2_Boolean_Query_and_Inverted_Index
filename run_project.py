@@ -67,9 +67,9 @@ class ProjectRunner:
             
         self.indexer.sort_terms()
         print("inverted indices: ")
-        for i in self.indexer.inverted_index.keys():
-            lt = self.indexer.inverted_index[i].traverse_list_extra()
-            print(i," ",lt)
+#         for i in self.indexer.inverted_index.keys():
+#             lt = self.indexer.inverted_index[i].traverse_list_extra()
+#             print(i," ",lt)
 #         self.indexer.add_skip_connections()
 #         self.indexer.calculate_tf_idf()
 
@@ -104,7 +104,7 @@ class ProjectRunner:
                 3. Get the DAAT AND query results & number of comparisons with & without skip pointers.
                 4. Get the DAAT AND query results & number of comparisons with & without skip pointers, 
                     along with sorting by tf-idf scores."""
-            tokenized_document = self.preprocessor.tokenizer(document)
+            tokenized_document = self.preprocessor.tokenizer(query)
             print(tokenized_document)
             input_term_arr = []  # Tokenized query. To be implemented.
 
