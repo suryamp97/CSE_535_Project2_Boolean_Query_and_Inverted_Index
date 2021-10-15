@@ -203,6 +203,11 @@ if __name__ == "__main__":
         this pre-loaded in memory index. """
     runner.run_indexer(corpus)
     queries = runner.run_indexer(queries)
+    with open(corpus, 'r') as fp:
+        for line in tqdm(fp.readlines()):
+            doc_id, document = self.preprocessor.get_doc_id(line)
+            tokenized_document = self.preprocessor.tokenizer(document)
+
     output_dict = runner.run_queries(queries, "[0]")
 
 
