@@ -65,7 +65,10 @@ class ProjectRunner:
                 tokenized_document = self.preprocessor.tokenizer(document)
                 self.indexer.generate_inverted_index(doc_id, tokenized_document)
         print("inverted indices: ")
-        print(self.indexer.inverted_index)
+        for i in self.indexer.inverted_index.keys():
+            lt = self.indexer.inverted_index[i].traverse_list()
+            print(i," ",lt)
+            
 #         self.indexer.sort_terms()
 #         self.indexer.add_skip_connections()
 #         self.indexer.calculate_tf_idf()
