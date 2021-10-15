@@ -40,11 +40,14 @@ class ProjectRunner:
             To be implemented."""
         raise NotImplementedError
 
-    def _get_postings(self):
+    def _get_postings(self,term_):
         """ Function to get the postings list of a term from the index.
             Use appropriate parameters & return types.
             To be implemented."""
-        raise NotImplementedError
+        postings_list = []
+        if term in self.indexer.inverted_index:
+            postings_list=self.indexer.inverted_index[term_].traverse_list()
+        raise postings_list
 
     def _output_formatter(self, op):
         """ This formats the result in the required format.
@@ -108,13 +111,12 @@ class ProjectRunner:
             print(input_term_arr)
 
             for term in input_term_arr:
-                postings, skip_postings = [], None
+                postings, skip_postings = None, None
 
                 """ Implement logic to populate initialize the above variables.
                     The below code formats your result to the required format.
                     To be implemented."""
-                if term in self.indexer.inverted_index:
-                    postings = self.indexer.inverted_index[term].traverse_list()
+                postings = _get_postings(term)
                 print(postings)
                 
                 output_dict['postingsList'][term] = postings
