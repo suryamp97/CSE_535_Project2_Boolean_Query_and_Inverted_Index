@@ -18,14 +18,27 @@ class Indexer:
         return self.inverted_index
 
     def generate_inverted_index(self, doc_id, tokenized_document):
+        tf_values = {}
+        
         for t in tokenized_document:
-            self.add_to_index(t, doc_id)
+            if t not in tf_values:
+                tf_values[t] = 1
+            else:
+                tf_values[t] += 1
+        
+        for t in tokenized_document:
+            self.add_to_index(t, doc_id, tf_values[t])
 
-    def add_to_index(self, term_, doc_id_):
+    def add_to_index(self, term_, doc_id_,tf_):
+        
         if term_ not in inverted_index:
             inverted_index[term] = LinkedList()
-            inverted_index[term].insert_at_end(tf,value)
-        raise NotImplementedError
+            inverted_index[term].insert_at_end(tf_,doc_id)
+        else:
+            cur_docids = inverted_index[term].traverse_list()
+            if doc_id not in cur_docids:
+                inverted_index[term].insert_at_end(tf_,doc_id)
+        return
 
     def sort_terms(self):
         """ Sorting the index by terms.
