@@ -66,6 +66,7 @@ class ProjectRunner:
         else:
             m_res = []
             for k in sorted(temp_dict.keys()):
+                print(k,temp_dict[k])
                 m_res.append(temp_dict[k])
             m_l=m_res
         print(m_l)
