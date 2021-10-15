@@ -27,19 +27,44 @@ class ProjectRunner:
         self.preprocessor = Preprocessor()
         self.indexer = Indexer()
 
-    def _merge(self):
+    def _merge(self, pl1, pl2):
         """ Implement the merge algorithm to merge 2 postings list at a time.
             Use appropriate parameters & return types.
             While merging 2 postings list, preserve the maximum tf-idf value of a document.
             To be implemented."""
-        raise NotImplementedError
+        merge_ = []
+        m,n = len(pl1),len(pl2)
+        i,j = 0,0
+        comparisons = 0
+        while i < m and j < n:
+            if pl1[i] < pl2[j]:
+                i += 1
+            elif pl2[j] < pl1[i]:
+                j+= 1
+            else:
+                merge_.append(pl1[i])
+                j += 1
+                i += 1
+            comparisons +=1
+        raise merge_, comparisons
 
-    def _daat_and(self):
-        """ Implement the DAAT AND algorithm, which merges the postings list of N query terms.
-            Use appropriate parameters & return types.
-            To be implemented."""
+    def _daat_and(self, query_list):
+        n_t = len(query_list)
+        p_l = []
+        if n_t==1:
+            p_l = self._get_postings(query_list[0])
+            return p_l
+        else:          
+            for i in range(1, len(query_token_list)):
+                
+                if merged_list:
+                    m_l, comparisons = self._merge(m_l, self._get_postings(query_list[i]))
+                    total_comparisons += comparisons
+                else:
+                    merged_list, comparisons = intersection(self._get_postings(query_list[i - 1]),self._get_postings(query_list[i]))
+                    total_comparisons += comparisons
         
-        raise NotImplementedError
+        return m_l, comparisons
 
     def _get_postings(self,term_):
         """ Function to get the postings list of a term from the index.
@@ -124,9 +149,10 @@ class ProjectRunner:
                 output_dict['postingsList'][term] = postings
                 output_dict['postingsListSkip'][term] = skip_postings
 
-            and_op_no_skip, and_op_skip, and_op_no_skip_sorted, and_op_skip_sorted = self._daat_and(input_term_arr), None, None, None
-            and_comparisons_no_skip, and_comparisons_skip, \
-                and_comparisons_no_skip_sorted, and_comparisons_skip_sorted = None, None, None, None
+            and_op_no_skip, and_comparisons_no_skip = self._daat_and(input_term_arr)
+            and_op_skip, and_op_no_skip_sorted, and_op_skip_sorted =  None, None, None
+            and_comparisons_skip, \
+                and_comparisons_no_skip_sorted, and_comparisons_skip_sorted =  None, None, None
             """ Implement logic to populate initialize the above variables.
                 The below code formats your result to the required format.
                 To be implemented."""
