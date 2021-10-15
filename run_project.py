@@ -164,7 +164,7 @@ class ProjectRunner:
                 output_dict['postingsListSkip'][term] = skip_postings
 
             and_op_no_skip, and_comparisons_no_skip = self._daat_and(input_term_arr, False)
-            and_op_skip,and_comparisons_skip        = self._daat_and(input_term_arr, True)
+            and_op_skip,and_comparisons_skip        = None  #self._daat_and(input_term_arr, True)
 
             and_op_no_skip = and_op_no_skip.traverse_list()
 
@@ -174,7 +174,7 @@ class ProjectRunner:
                 The below code formats your result to the required format.
                 To be implemented."""
             and_op_no_score_no_skip, and_results_cnt_no_skip = self._output_formatter(and_op_no_skip)
-            #and_op_no_score_skip, and_results_cnt_skip = self._output_formatter(and_op_skip)
+            and_op_no_score_skip, and_results_cnt_skip = self._output_formatter(and_op_skip)
             and_op_no_score_no_skip_sorted, and_results_cnt_no_skip_sorted = self._output_formatter(and_op_no_skip_sorted)
             and_op_no_score_skip_sorted, and_results_cnt_skip_sorted = self._output_formatter(and_op_skip_sorted)
 
