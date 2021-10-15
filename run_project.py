@@ -58,8 +58,8 @@ class ProjectRunner:
 
                     comparisons += 1
         else:
-            return m_l,comparisons
-        return m_l, comparisons
+            return m_l.traverse_list(),comparisons
+        return m_l.traverse_list(), comparisons
 
     def _daat_and(self, query_list, skip):
         print(query_list)
@@ -165,8 +165,6 @@ class ProjectRunner:
 
             and_op_no_skip, and_comparisons_no_skip = self._daat_and(input_term_arr, False)
             and_op_skip,and_comparisons_skip        = None,None  #self._daat_and(input_term_arr, True)
-
-            and_op_no_skip = and_op_no_skip.traverse_list()
 
             and_op_no_skip_sorted, and_op_skip_sorted =  None, None
             and_comparisons_no_skip_sorted, and_comparisons_skip_sorted =   None, None
