@@ -164,7 +164,7 @@ class ProjectRunner:
                 output_dict['postingsListSkip'][term] = skip_postings
 
             and_op_no_skip, and_comparisons_no_skip = self._daat_and(input_term_arr, False)
-            and_op_skip,and_comparisons_skip        = None  #self._daat_and(input_term_arr, True)
+            and_op_skip,and_comparisons_skip        = None,None  #self._daat_and(input_term_arr, True)
 
             and_op_no_skip = and_op_no_skip.traverse_list()
 
