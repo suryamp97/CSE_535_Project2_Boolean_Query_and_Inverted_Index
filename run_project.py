@@ -28,33 +28,36 @@ class ProjectRunner:
         self.preprocessor = Preprocessor()
         self.indexer = Indexer()
 
-    def _merge(self, plist1, plist2):
+    def _merge(self, plist1, plist2, skip):
         """ Implement the merge algorithm to merge 2 postings list at a time.
             Use appropriate parameters & return types.
             While merging 2 postings list, preserve the maximum tf-idf value of a document.
             To be implemented."""
         m_1 = []
-        pl1 = copy.deepcopy(plist1)
-        pl2 = copy.deepcopy(plist2)
-        comparisons = 0
+        if  not skip:
+            pl1 = copy.deepcopy(plist1)
+            pl2 = copy.deepcopy(plist2)
+            comparisons = 0
 
-        if pl1 is not None and pl2 is not None:
-            p1 = pl1.start_node
-            p2 = pl2.start_node
+            if pl1 is not None and pl2 is not None:
+                p1 = pl1.start_node
+                p2 = pl2.start_node
 
-            while p1 and p2:
-                if p1.value == p2.value:
-                    m_1.append(p1.value)
-                    p1 = p1.next
-                    p2 = p2.next
+                while p1 and p2:
+                    if p1.value == p2.value:
+                        m_1.append(p1.value)
+                        p1 = p1.next
+                        p2 = p2.next
 
-                elif p1.value < p2.value:
-                    p1 = p1.next
+                    elif p1.value < p2.value:
+                        p1 = p1.next
 
-                else:
-                    p2 = p2.next
+                    else:
+                        p2 = p2.next
 
-                comparisons += 1
+                    comparisons += 1
+        else:
+            return
         return m_1, comparisons
 
     def _daat_and(self, query_list):
@@ -159,8 +162,10 @@ class ProjectRunner:
                 output_dict['postingsList'][term] = postings
                 output_dict['postingsListSkip'][term] = skip_postings
 
-            and_op_no_skip, and_comparisons_no_skip = self._daat_and(input_term_arr)
-            and_op_skip, and_op_no_skip_sorted, and_op_skip_sorted =  None, None, None
+            and_op_no_skip, and_comparisons_no_skip = self._daat_and(input_term_arr, False)
+            and_op_skip,and_comparisons_skip        = self._daat_and(input_term_arr, True)
+            
+            and_op_no_skip_sorted, and_op_skip_sorted =  None, None
             and_comparisons_skip, \
                 and_comparisons_no_skip_sorted, and_comparisons_skip_sorted =  None, None, None
             """ Implement logic to populate initialize the above variables.
