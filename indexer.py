@@ -60,4 +60,5 @@ class Indexer:
         for term in self.inverted_index:
             postings_list_len = self.inverted_index[term].length
             idf_ = total_docs_len / postings_list_len
+            self.inverted_index[term].idf= idf_
         raise NotImplementedError
