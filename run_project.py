@@ -50,19 +50,18 @@ class ProjectRunner:
 
     def _daat_and(self, query_list):
         n_t = len(query_list)
-        p_l = []
+        m_l = []
         tot_comparisons = 0
         if n_t==1:
             p_l = self._get_postings(query_list[0])
             return p_l
         else:          
-            for i in range(1, n_t):
-                
-                if merged_list:
+            for i in range(1, n_t):               
+                if len(m_l)==0:
                     m_l, comparisons = self._merge(m_l, self._get_postings(query_list[i]))
                     tot_comparisons += comparisons
                 else:
-                    merged_list, comparisons = self._merge(self._get_postings(query_list[i - 1]),self._get_postings(query_list[i]))
+                    m_l, comparisons = self._merge(self._get_postings(query_list[i-1]),self._get_postings(query_list[i]))
                     tot_comparisons += comparisons
         
         return m_l, tot_comparisons
