@@ -116,7 +116,7 @@ class ProjectRunner:
                 """ Implement logic to populate initialize the above variables.
                     The below code formats your result to the required format.
                     To be implemented."""
-                postings = _get_postings(term)
+                postings = self._get_postings(term)
                 print(postings)
                 
                 output_dict['postingsList'][term] = postings
