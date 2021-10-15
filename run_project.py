@@ -136,7 +136,7 @@ class ProjectRunner:
                     along with sorting by tf-idf scores."""
             
             input_term_arr = self.preprocessor.tokenizer(query)  # Tokenized query. To be implemented.
-            print(input_term_arr)
+            #print(input_term_arr)
 
             for term in input_term_arr:
                 postings, skip_postings = None, None
@@ -145,7 +145,7 @@ class ProjectRunner:
                     The below code formats your result to the required format.
                     To be implemented."""
                 postings = self._get_postings(term)
-                print(postings)
+                #print(postings)
                 
                 output_dict['postingsList'][term] = postings
                 output_dict['postingsListSkip'][term] = skip_postings
