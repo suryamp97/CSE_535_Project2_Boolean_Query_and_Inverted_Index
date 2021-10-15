@@ -66,8 +66,8 @@ class ProjectRunner:
             m_l = m_l.traverse_list()
         else:
             m_res = []
-            for k in sorted(temp_dict.keys()):
-                print(k,temp_dict[k])
+            for k in sorted(temp_dict.keys(),reverse=True):
+                #print(k,temp_dict[k])
                 m_res.append(temp_dict[k])
             m_l=m_res
         print(m_l)
