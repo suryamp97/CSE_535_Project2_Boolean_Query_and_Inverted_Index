@@ -8,13 +8,13 @@ from collections import OrderedDict
 
 class Node:
 
-    def __init__(self, value=None, next=None, tf=None):
+    def __init__(self, value=None, next=None, tf_idf=None):
         """ Class to define the structure of each node in a linked list (postings list).
             Value: document id, Next: Pointer to the next node
             Add more parameters if needed.
             Hint: You may want to define skip pointers & appropriate score calculation here"""
         self.value = value
-        self.tf_idf = tf
+        self.tf_idf = tf_idf
         self.next = next
 
 
