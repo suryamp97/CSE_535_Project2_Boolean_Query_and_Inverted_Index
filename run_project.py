@@ -33,7 +33,7 @@ class ProjectRunner:
             Use appropriate parameters & return types.
             While merging 2 postings list, preserve the maximum tf-idf value of a document.
             To be implemented."""
-        merged_list = []
+        m_1 = []
         pl1 = copy.deepcopy(plist1)
         pl2 = copy.deepcopy(plist2)
         comparisons = 0
@@ -44,7 +44,7 @@ class ProjectRunner:
 
             while p1 and p2:
                 if p1.value == p2.value:
-                    merged_list.append(p1.value)
+                    m_1.append(p1.value)
                     p1 = p1.next
                     p2 = p2.next
 
@@ -55,7 +55,7 @@ class ProjectRunner:
                     p2 = p2.next
 
                 comparisons += 1
-        return merged_list, comparisons
+        return m_1, comparisons
 
     def _daat_and(self, query_list):
         print(query_list)
