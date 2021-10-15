@@ -19,7 +19,7 @@ class Indexer:
 
     def generate_inverted_index(self, doc_id, tokenized_document):
         tf_values = {}
-        
+        n = len(tokenized_doc)
         for t in tokenized_document:
             if t not in tf_values:
                 tf_values[t] = 1
@@ -27,7 +27,7 @@ class Indexer:
                 tf_values[t] += 1
         
         for t in tf_values:
-            self.add_to_index(t, doc_id, tf_values[t])
+            self.add_to_index(t, doc_id, tf_values[t]/n)
 
     def add_to_index(self, term_, doc_id_,tf_):
         
