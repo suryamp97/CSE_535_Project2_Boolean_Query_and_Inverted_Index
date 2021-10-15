@@ -18,6 +18,7 @@ import flask
 from flask import Flask
 from flask import request
 import hashlib
+import copy
 
 app = Flask(__name__)
 
