@@ -51,20 +51,21 @@ class ProjectRunner:
     def _daat_and(self, query_list):
         n_t = len(query_list)
         p_l = []
+        tot_comparisons = 0
         if n_t==1:
             p_l = self._get_postings(query_list[0])
             return p_l
         else:          
-            for i in range(1, len(query_token_list)):
+            for i in range(1, n_t):
                 
                 if merged_list:
                     m_l, comparisons = self._merge(m_l, self._get_postings(query_list[i]))
-                    total_comparisons += comparisons
+                    tot_comparisons += comparisons
                 else:
-                    merged_list, comparisons = intersection(self._get_postings(query_list[i - 1]),self._get_postings(query_list[i]))
-                    total_comparisons += comparisons
+                    merged_list, comparisons = self._merge(self._get_postings(query_list[i - 1]),self._get_postings(query_list[i]))
+                    tot_comparisons += comparisons
         
-        return m_l, comparisons
+        return m_l, tot_comparisons
 
     def _get_postings(self,term_):
         """ Function to get the postings list of a term from the index.
