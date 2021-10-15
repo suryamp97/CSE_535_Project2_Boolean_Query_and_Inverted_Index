@@ -1,2 +1,12 @@
-144285	Epidemiological and clinical characteristics of 136 cases of COVID-19 in main district of Chongqing
-74698	Late‐onset Pneumocystis jirovecii pneumonia post–fludarabine, cyclophosphamide and rituximab: implications for prophylaxis
+1	Epidemiological and clinical characteristics of 136 cases of COVID-19 in main district of Chongqing
+2	Late‐onset Pneumocystis jirovecii pneumonia post–fludarabine, cyclophosphamide and rituximab: implications for prophylaxis
+3	COVID-19 and diabetes mellitus: implications for prognosis and clinical management
+4	Seroprevalence of Rodent Pathogens in Wild Rats from the Island of St. Kitts, West Indies
+5	Prevalence and genetic diversity analysis of human coronaviruses among cross-border children
+6	Technical considerations for developing enzyme immunohistochemical staining procedures on formalin-fixed paraffin-embedded tissues for diagnostic pathology.
+7	PERSISTENT CORONAVIRUS INFECTION OF PROGENITOR OLIGODENDROCYTES
+8	On the diverse and opposing effects of nutrition on pathogen virulence
+9	Pharmaceutical biotechnology
+10	Procalcitonin in children with suspected novel influenza A (H1N1) infection
+11	Psychometric properties of measures of substance use: a systematic review and meta-analysis of reliability, validity and diagnostic test accuracy.
+12	Assessment of celecoxib poly(lactic-co-glycolic) acid nanoformulation on drug pharmacodynamics and pharmacokinetics in rats.
