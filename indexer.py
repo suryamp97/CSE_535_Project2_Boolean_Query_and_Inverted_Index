@@ -61,7 +61,7 @@ class Indexer:
             postings_list_len = self.inverted_index[term].length
             idf_ = total_docs_len / postings_list_len
             self.inverted_index[term].idf= idf_
-            prnit(term, idf_)
+            print(term, idf_)
             plist = self.inverted_index[term]
             if plist is not None:
                 h = plist.start_node
