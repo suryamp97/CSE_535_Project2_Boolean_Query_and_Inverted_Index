@@ -47,7 +47,7 @@ class ProjectRunner:
         postings_list = []
         if term_ in self.indexer.inverted_index:
             postings_list=self.indexer.inverted_index[term_].traverse_list()
-        raise postings_list
+        return postings_list
 
     def _output_formatter(self, op):
         """ This formats the result in the required format.
