@@ -23,11 +23,24 @@ class Preprocessor:
         return int(arr[0]), arr[1]
 
     def tokenizer(self, text):
-        tokenized_doc = text
+        tokenized_doc = text.lower()
         print("actual text",tokenized_doc)
+        
         tokenized_doc = re.sub(r"[^a-zA-Z0-9]+", ' ', tokenized_doc)
         print("specialchar",tokenized_doc)
+        
         re.sub(' +', ' ', tokenized_doc)
         print("extra space",tokenized_doc)
         
-        return tokenized_doc
+        tokens = tokenized_doc.split()
+        
+        stop_words = set(stopwords.words('english'))
+        tokens_filtered = [w for w in tokens if not w.lower() in stop_words]
+        
+        stemmer = PorterStemmer()
+        tokens_stemmed = [stemmer.stem(w) for w in tokens_filtered]
+        
+        final_tokens = tokens_stemmed
+        
+        print("final token",final_tokens)
+        return final_tokens
