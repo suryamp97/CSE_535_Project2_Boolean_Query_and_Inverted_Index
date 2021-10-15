@@ -14,6 +14,7 @@ class Node:
             Add more parameters if needed.
             Hint: You may want to define skip pointers & appropriate score calculation here"""
         self.value = value
+        self.tf = None
         self.next = next
 
 
