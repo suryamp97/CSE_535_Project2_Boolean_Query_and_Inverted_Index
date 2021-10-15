@@ -104,8 +104,8 @@ class ProjectRunner:
                 3. Get the DAAT AND query results & number of comparisons with & without skip pointers.
                 4. Get the DAAT AND query results & number of comparisons with & without skip pointers, 
                     along with sorting by tf-idf scores."""
-            raise NotImplementedError
-
+            tokenized_document = self.preprocessor.tokenizer(document)
+            print(tokenized_document)
             input_term_arr = []  # Tokenized query. To be implemented.
 
             for term in input_term_arr:
@@ -202,13 +202,12 @@ if __name__ == "__main__":
     """ Index the documents from beforehand. When the API endpoint is hit, queries are run against 
         this pre-loaded in memory index. """
     runner.run_indexer(corpus)
-    queries = runner.run_indexer(queries)
-    with open(corpus, 'r') as fp:
-        for line in tqdm(fp.readlines()):
-            doc_id, document = self.preprocessor.get_doc_id(line)
-            tokenized_document = self.preprocessor.tokenizer(document)
 
-    output_dict = runner.run_queries(queries, "[0]")
+    with open(queries, 'r') as q:
+        querylist= q.readlines()):
+
+
+    output_dict = runner.run_queries(querylist, "[0]")
 
 
     with open(output_location, 'w') as fp:
