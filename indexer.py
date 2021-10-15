@@ -61,14 +61,15 @@ class Indexer:
             postings_list_len = self.inverted_index[term].length
             idf_ = total_docs_len / postings_list_len
             self.inverted_index[term].idf= idf_
-            
+            prnit(term, idf_)
             plist = self.inverted_index[term]
             if plist is not None:
                 h = plist.start_node
                 while h:
                     cur_tf = h.tf_idf
+                    print("old",h.value,h.tf_idf)
                     h.tf_idf = idf_ * cur_tf
+                    print("new"h.value,h.tf_idf)
                     h=h.next
-        for i in self.inverted_index.keys():
-            print (i," ",self.inverted_index[i].traverse_list_extra())
+
         return
