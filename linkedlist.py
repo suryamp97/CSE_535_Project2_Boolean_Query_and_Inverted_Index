@@ -71,9 +71,12 @@ class LinkedList:
         n_skips = math.floor(math.sqrt(self.length))
         if n_skips * n_skips == self.length:
             n_skips = n_skips - 1
+        self.n_skips = n_skips
+        self.skip_length = round(math.sqrt(self.length),0)
         """ Write logic to add skip pointers to the linked list. 
             This function does not return anything.
             To be implemented."""
+        
         raise NotImplementedError
 
     def insert_at_end(self, tf, value):
