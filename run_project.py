@@ -104,9 +104,8 @@ class ProjectRunner:
                 3. Get the DAAT AND query results & number of comparisons with & without skip pointers.
                 4. Get the DAAT AND query results & number of comparisons with & without skip pointers, 
                     along with sorting by tf-idf scores."""
-            tokenized_document = self.preprocessor.tokenizer(query)
-            print(tokenized_document)
-            input_term_arr = []  # Tokenized query. To be implemented.
+            input_term_arr = self.preprocessor.tokenizer(query)  # Tokenized query. To be implemented.
+            print(input_term_arr)
 
             for term in input_term_arr:
                 postings, skip_postings = None, None
@@ -114,7 +113,9 @@ class ProjectRunner:
                 """ Implement logic to populate initialize the above variables.
                     The below code formats your result to the required format.
                     To be implemented."""
-
+                postings = self.inverted_index[term].traverse_list()
+                print(postings)
+                
                 output_dict['postingsList'][term] = postings
                 output_dict['postingsListSkip'][term] = skip_postings
 
