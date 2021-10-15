@@ -45,7 +45,7 @@ class ProjectRunner:
 
                 while p1 and p2:
                     if p1.value == p2.value:
-                        m_1.append(p1.value)
+                        m_l.append(p1.value)
                         p1 = p1.next
                         p2 = p2.next
 
@@ -58,7 +58,7 @@ class ProjectRunner:
                     comparisons += 1
         else:
             return m_l,comparisons
-        return m_1, comparisons
+        return m_l, comparisons
 
     def _daat_and(self, query_list, skip):
         print(query_list)
