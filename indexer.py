@@ -33,11 +33,11 @@ class Indexer:
         
         if term_ not in self.inverted_index:
             self.inverted_index[term_] = LinkedList()
-            self.inverted_index[term_].insert_at_end(tf_,doc_id)
+            self.inverted_index[term_].insert_at_end(tf_,doc_id_)
         else:
             cur_docids = self.inverted_index[term_].traverse_list()
-            if doc_id not in cur_docids:
-                self.inverted_index[term_].insert_at_end(tf_,doc_id)
+            if doc_id_ not in cur_docids:
+                self.inverted_index[term_].insert_at_end(tf_,doc_id_)
         return
 
     def sort_terms(self):
