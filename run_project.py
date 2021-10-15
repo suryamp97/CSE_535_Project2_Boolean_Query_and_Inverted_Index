@@ -28,13 +28,14 @@ class ProjectRunner:
         self.preprocessor = Preprocessor()
         self.indexer = Indexer()
 
-    def _merge(self, plist1, plist2, skip):
+    def _merge(self, plist1, plist2, skip, toSort):
         """ Implement the merge algorithm to merge 2 postings list at a time.
             Use appropriate parameters & return types.
             While merging 2 postings list, preserve the maximum tf-idf value of a document.
             To be implemented."""
         m_l = LinkedList()
         comparisons = 0
+        temp_dict = {}
         if  not skip:
             pl1 = copy.deepcopy(plist1)
             pl2 = copy.deepcopy(plist2)
@@ -47,6 +48,7 @@ class ProjectRunner:
                     if p1.value == p2.value:
                         idf_ = max(p1.tf_idf, p2.tf_idf) 
                         m_l.insert_at_end(idf_,p1.value)
+                        temp_dict[idf_] = p1.value
                         p1 = p1.next
                         p2 = p2.next
 
@@ -59,10 +61,17 @@ class ProjectRunner:
                     comparisons += 1
         else:
             return m_l.traverse_list(),comparisons
-        print(m_l.traverse_list())
-        return m_l.traverse_list(), comparisons
+        if not toSort:
+            m_l = m_l.traverse_list()
+        else:
+            m_res = []
+            for k in sorted(temp_dict.keys()):
+                m_res.append(temp_dict[k])
+            m_l=m_res
+        print(m_l)
+        return m_l, comparisons
 
-    def _daat_and(self, query_list, skip):
+    def _daat_and(self, query_list, skip, toSort):
         print(query_list)
         n_t = len(query_list)
         m_l = []
@@ -73,10 +82,10 @@ class ProjectRunner:
         else:          
             for i in range(1, n_t):               
                 if len(m_l)!=0:
-                    m_l, comparisons = self._merge(m_l, self.indexer.inverted_index[query_list[i]],skip)
+                    m_l, comparisons = self._merge(m_l, self.indexer.inverted_index[query_list[i]], skip, toSort)
                     tot_comparisons += comparisons
                 else:
-                    m_l, comparisons = self._merge(self.indexer.inverted_index[query_list[i-1]],self.indexer.inverted_index[query_list[i]],skip)
+                    m_l, comparisons = self._merge(self.indexer.inverted_index[query_list[i-1]],self.indexer.inverted_index[query_list[i]], skip, toSort)
                     tot_comparisons += comparisons
         
         return m_l, tot_comparisons
@@ -164,11 +173,12 @@ class ProjectRunner:
                 output_dict['postingsList'][term] = postings
                 output_dict['postingsListSkip'][term] = skip_postings
 
-            and_op_no_skip, and_comparisons_no_skip = self._daat_and(input_term_arr, False)
-            and_op_skip,and_comparisons_skip        = None,None  #self._daat_and(input_term_arr, True)
+            and_op_no_skip, and_comparisons_no_skip = self._daat_and(input_term_arr, False, False)
+            and_op_skip,and_comparisons_skip        = None,None  
 
-            and_op_no_skip_sorted, and_op_skip_sorted =  None, None
-            and_comparisons_no_skip_sorted, and_comparisons_skip_sorted =   None, None
+            and_op_no_skip_sorted, and_comparisons_no_skip_sorted = self._daat_and(input_term_arr, False, True)
+            and_op_skip_sorted, and_comparisons_skip_sorted =  None, None
+            
             """ Implement logic to populate initialize the above variables.
                 The below code formats your result to the required format.
                 To be implemented."""
