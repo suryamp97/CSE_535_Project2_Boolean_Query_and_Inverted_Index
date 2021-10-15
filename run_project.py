@@ -204,7 +204,7 @@ if __name__ == "__main__":
     runner.run_indexer(corpus)
 
     with open(queries, 'r') as q:
-        querylist= q.readlines():
+        querylist= q.readlines()
 
 
     output_dict = runner.run_queries(querylist, "[0]")
