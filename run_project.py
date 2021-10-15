@@ -49,6 +49,7 @@ class ProjectRunner:
         return merge_, comparisons
 
     def _daat_and(self, query_list):
+        print(query_list)
         n_t = len(query_list)
         m_l = []
         tot_comparisons = 0
@@ -63,7 +64,7 @@ class ProjectRunner:
                 else:
                     m_l, comparisons = self._merge(self._get_postings(query_list[i-1]),self._get_postings(query_list[i]))
                     tot_comparisons += comparisons
-        
+        print(m_l,tot_comparisons)
         return m_l, tot_comparisons
 
     def _get_postings(self,term_):
