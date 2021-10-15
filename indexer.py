@@ -70,5 +70,5 @@ class Indexer:
                     h.tf_idf = idf_ * cur_tf
                     h=h.next
         for i in self.inverted_index.keys():
-            print (i," ",self.inverted_index[i].traverse_list_extra)
+            print (i," ",self.inverted_index[i].traverse_list_extra())
         return
