@@ -165,16 +165,16 @@ class ProjectRunner:
 
             and_op_no_skip, and_comparisons_no_skip = self._daat_and(input_term_arr, False)
             and_op_skip,and_comparisons_skip        = self._daat_and(input_term_arr, True)
-            print(type(and_op_no_skip))
+
             and_op_no_skip = and_op_no_skip.traverse_list()
-            print(type(and_op_no_skip))
+
             and_op_no_skip_sorted, and_op_skip_sorted =  None, None
             and_comparisons_no_skip_sorted, and_comparisons_skip_sorted =   None, None
             """ Implement logic to populate initialize the above variables.
                 The below code formats your result to the required format.
                 To be implemented."""
-            and_op_no_score_no_skip, and_results_cnt_no_skip = self._output_formatter(list(and_op_no_skip))
-            and_op_no_score_skip, and_results_cnt_skip = self._output_formatter(and_op_skip)
+            and_op_no_score_no_skip, and_results_cnt_no_skip = self._output_formatter(and_op_no_skip)
+            #and_op_no_score_skip, and_results_cnt_skip = self._output_formatter(and_op_skip)
             and_op_no_score_no_skip_sorted, and_results_cnt_no_skip_sorted = self._output_formatter(and_op_no_skip_sorted)
             and_op_no_score_skip_sorted, and_results_cnt_skip_sorted = self._output_formatter(and_op_skip_sorted)
 
