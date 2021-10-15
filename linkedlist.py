@@ -14,7 +14,7 @@ class Node:
             Add more parameters if needed.
             Hint: You may want to define skip pointers & appropriate score calculation here"""
         self.value = value
-        self.tf = tf
+        self.tf_idf = tf
         self.next = next
 
 
@@ -80,7 +80,7 @@ class LinkedList:
         raise NotImplementedError
 
     def insert_at_end(self, tf, value):
-        new_node = Node(value=value, tf=tf)
+        new_node = Node(value=value, tf_idf=tf*self.idf)
         self.length += 1
         n = self.start_node
 
