@@ -33,7 +33,7 @@ class ProjectRunner:
             Use appropriate parameters & return types.
             While merging 2 postings list, preserve the maximum tf-idf value of a document.
             To be implemented."""
-        m_l = []
+        m_l = LinkedList()
         comparisons = 0
         if  not skip:
             pl1 = copy.deepcopy(plist1)
@@ -45,7 +45,8 @@ class ProjectRunner:
 
                 while p1 and p2:
                     if p1.value == p2.value:
-                        m_l.append(p1.value)
+                        idf_ = max(p1.tf_idf, p2.tf_idf) 
+                        m_l.insert_at_end(p1.value,idf_)
                         p1 = p1.next
                         p2 = p2.next
 
@@ -162,7 +163,7 @@ class ProjectRunner:
                 output_dict['postingsList'][term] = postings
                 output_dict['postingsListSkip'][term] = skip_postings
 
-            and_op_no_skip, and_comparisons_no_skip = self._daat_and(input_term_arr, False)
+            and_op_no_skip, and_comparisons_no_skip = self._daat_and(input_term_arr, False).traverse_list()
             and_op_skip,and_comparisons_skip        = self._daat_and(input_term_arr, True)
             
             and_op_no_skip_sorted, and_op_skip_sorted =  None, None
