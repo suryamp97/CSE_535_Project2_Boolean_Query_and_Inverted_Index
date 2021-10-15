@@ -108,7 +108,7 @@ class ProjectRunner:
             print(input_term_arr)
 
             for term in input_term_arr:
-                postings, skip_postings = None, None
+                postings, skip_postings = [], None
 
                 """ Implement logic to populate initialize the above variables.
                     The below code formats your result to the required format.
