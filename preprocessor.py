@@ -23,8 +23,10 @@ class Preprocessor:
         return int(arr[0]), arr[1]
 
     def tokenizer(self, text):
-        """ Implement logic to pre-process & tokenize document text.
-            Write the code in such a way that it can be re-used for processing the user's query.
-            To be implemented."""
-        """Hi"""
-        raise NotImplementedError
+        tokenized_doc = text
+        tokenized_doc = re.sub(r"[^a-zA-Z0-9]+", ' ', text)
+        print("specialchar",tokenized_doc)
+        re.sub(' +', ' ', tokenized_doc)
+        print("extra space",tokenized_doc)
+        
+        return tokenized_doc
