@@ -66,7 +66,7 @@ class ProjectRunner:
                 self.indexer.generate_inverted_index(doc_id, tokenized_document)
         print("inverted indices: ")
         for i in self.indexer.inverted_index.keys():
-            lt = self.indexer.inverted_index[i].traverse_list()
+            lt = self.indexer.inverted_index[i].traverse_list_extra()
             print(i," ",lt)
             
 #         self.indexer.sort_terms()
