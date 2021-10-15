@@ -113,7 +113,8 @@ class ProjectRunner:
                 """ Implement logic to populate initialize the above variables.
                     The below code formats your result to the required format.
                     To be implemented."""
-                postings = self.indexer.inverted_index[term].traverse_list()
+                if term in self.indexer.inverted_index:
+                    postings = self.indexer.inverted_index[term].traverse_list()
                 print(postings)
                 
                 output_dict['postingsList'][term] = postings
