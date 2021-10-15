@@ -61,4 +61,14 @@ class Indexer:
             postings_list_len = self.inverted_index[term].length
             idf_ = total_docs_len / postings_list_len
             self.inverted_index[term].idf= idf_
-        raise NotImplementedError
+            
+            plist = self.inverted_index[term]
+            if plist is not None:
+                h = plist.start_node
+                while h:
+                    cur_tf = h.tf_idf
+                    h.tf_idf = idf_ * cur_tf
+                    h=h.next
+        for i in self.inverted_index.keys():
+            print (i," ",self.inverted_index.traverse_list_extra)
+        return
