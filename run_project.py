@@ -34,10 +34,10 @@ class ProjectRunner:
             While merging 2 postings list, preserve the maximum tf-idf value of a document.
             To be implemented."""
         m_1 = []
+        comparisons = 0
         if  not skip:
             pl1 = copy.deepcopy(plist1)
             pl2 = copy.deepcopy(plist2)
-            comparisons = 0
 
             if pl1 is not None and pl2 is not None:
                 p1 = pl1.start_node
@@ -57,10 +57,10 @@ class ProjectRunner:
 
                     comparisons += 1
         else:
-            return
+            return m_l,comparisons
         return m_1, comparisons
 
-    def _daat_and(self, query_list):
+    def _daat_and(self, query_list, skip):
         print(query_list)
         n_t = len(query_list)
         m_l = []
@@ -71,10 +71,10 @@ class ProjectRunner:
         else:          
             for i in range(1, n_t):               
                 if len(m_l)!=0:
-                    m_l, comparisons = self._merge(m_l, self.indexer.inverted_index[query_list[i]])
+                    m_l, comparisons = self._merge(m_l, self.indexer.inverted_index[query_list[i]],skip)
                     tot_comparisons += comparisons
                 else:
-                    m_l, comparisons = self._merge(self.indexer.inverted_index[query_list[i-1]],self.indexer.inverted_index[query_list[i]])
+                    m_l, comparisons = self._merge(self.indexer.inverted_index[query_list[i-1]],self.indexer.inverted_index[query_list[i]],skip)
                     tot_comparisons += comparisons
         print(m_l,tot_comparisons)
         return m_l, tot_comparisons
