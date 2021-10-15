@@ -124,7 +124,7 @@ class ProjectRunner:
                 output_dict['postingsList'][term] = postings
                 output_dict['postingsListSkip'][term] = skip_postings
 
-            and_op_no_skip, and_op_skip, and_op_no_skip_sorted, and_op_skip_sorted = None, None, None, None
+            and_op_no_skip, and_op_skip, and_op_no_skip_sorted, and_op_skip_sorted = self._daat_and(input_term_arr), None, None, None
             and_comparisons_no_skip, and_comparisons_skip, \
                 and_comparisons_no_skip_sorted, and_comparisons_skip_sorted = None, None, None, None
             """ Implement logic to populate initialize the above variables.
