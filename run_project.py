@@ -27,26 +27,34 @@ class ProjectRunner:
         self.preprocessor = Preprocessor()
         self.indexer = Indexer()
 
-    def _merge(self, pl1, pl2):
+    def _merge(self, plist1, plist2):
         """ Implement the merge algorithm to merge 2 postings list at a time.
             Use appropriate parameters & return types.
             While merging 2 postings list, preserve the maximum tf-idf value of a document.
             To be implemented."""
-        merge_ = []
-        m,n = len(pl1),len(pl2)
-        i,j = 0,0
+        merged_list = []
+        pl1 = copy.deepcopy(plist1)
+        pl2 = copy.deepcopy(plist2)
         comparisons = 0
-        while i < m and j < n:
-            if pl1[i] < pl2[j]:
-                i += 1
-            elif pl2[j] < pl1[i]:
-                j+= 1
-            else:
-                merge_.append(pl1[i])
-                j += 1
-                i += 1
-            comparisons +=1
-        return merge_, comparisons
+
+        if pl1 is not None and pl2 is not None:
+            p1 = pl1.start_node
+            p2 = pl2.start_node
+
+            while p1 and p2:
+                if p1.value == p2.value:
+                    merged_list.append(p1.value)
+                    p1 = p1.next
+                    p2 = p2.next
+
+                elif p1.value < p2.value:
+                    p1 = p1.next
+
+                else:
+                    p2 = p2.next
+
+                comparisons += 1
+        return merged_list, comparisons
 
     def _daat_and(self, query_list):
         print(query_list)
@@ -59,10 +67,10 @@ class ProjectRunner:
         else:          
             for i in range(1, n_t):               
                 if len(m_l)!=0:
-                    m_l, comparisons = self._merge(m_l, self._get_postings(query_list[i]))
+                    m_l, comparisons = self._merge(m_l, self.indexer.inverted_index[query_list[i]])
                     tot_comparisons += comparisons
                 else:
-                    m_l, comparisons = self._merge(self._get_postings(query_list[i-1]),self._get_postings(query_list[i]))
+                    m_l, comparisons = self._merge(self.indexer.inverted_index[query_list[i-1]],self.indexer.inverted_index[query_list[i]])
                     tot_comparisons += comparisons
         print(m_l,tot_comparisons)
         return m_l, tot_comparisons
