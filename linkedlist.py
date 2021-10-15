@@ -31,11 +31,13 @@ class LinkedList:
     def traverse_list(self):
         traversal = []
         if self.start_node is None:
+            print("List has no element")
             return
         else:
-            """ Write logic to traverse the linked list.
-                To be implemented."""
-            raise NotImplementedError
+            n = self.start_node
+            while n is not None:
+                traversal.append(n.value)
+                n=n.next
             return traversal
 
     def traverse_skips(self):
@@ -58,9 +60,6 @@ class LinkedList:
         raise NotImplementedError
 
     def insert_at_end(self, value):
-        """ Write logic to add new elements to the linked list.
-            Insert the element at an appropriate position, such that elements to the left are lower than the inserted
-            element, and elements to the right are greater than the inserted element.
-            To be implemented. """
+        
         raise NotImplementedError
 
