@@ -58,7 +58,7 @@ class ProjectRunner:
             return p_l
         else:          
             for i in range(1, n_t):               
-                if len(m_l)==0:
+                if len(m_l)!=0:
                     m_l, comparisons = self._merge(m_l, self._get_postings(query_list[i]))
                     tot_comparisons += comparisons
                 else:
