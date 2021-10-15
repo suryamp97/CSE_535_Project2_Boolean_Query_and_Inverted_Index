@@ -56,8 +56,7 @@ class Indexer:
     def calculate_tf_idf(self):
         """ Calculate tf-idf score for each document in the postings lists of the index.
             To be implemented."""
-        total_docs_len = len(self.inverted_index.keys())
-        print("totaldocs",total_docs_len)
+        total_docs_len = 12
         for term in self.inverted_index:
             postings_list_len = self.inverted_index[term].length
             idf_ = total_docs_len / postings_list_len
