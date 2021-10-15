@@ -59,6 +59,7 @@ class ProjectRunner:
                     comparisons += 1
         else:
             return m_l.traverse_list(),comparisons
+        print(m_l.traverse_list)
         return m_l.traverse_list(), comparisons
 
     def _daat_and(self, query_list, skip):
