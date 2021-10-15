@@ -113,7 +113,7 @@ class ProjectRunner:
 #             lt = self.indexer.inverted_index[i].traverse_list_extra()
 #             print(i," ",lt)
 #         self.indexer.add_skip_connections()
-#         self.indexer.calculate_tf_idf()
+        self.indexer.calculate_tf_idf()
 
     def sanity_checker(self, command):
         """ DO NOT MODIFY THIS. THIS IS USED BY THE GRADER. """
