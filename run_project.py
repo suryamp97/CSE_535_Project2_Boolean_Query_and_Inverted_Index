@@ -46,7 +46,7 @@ class ProjectRunner:
                 j += 1
                 i += 1
             comparisons +=1
-        raise merge_, comparisons
+        return merge_, comparisons
 
     def _daat_and(self, query_list):
         n_t = len(query_list)
