@@ -80,7 +80,7 @@ class LinkedList:
         raise NotImplementedError
 
     def insert_at_end(self, tf, value):
-        new_node = Node(value=value, tf_idf=tf*self.idf)
+        new_node = Node(value=value, tf=tf)
         self.length += 1
         n = self.start_node
 
