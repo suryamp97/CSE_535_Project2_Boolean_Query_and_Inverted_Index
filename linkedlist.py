@@ -59,7 +59,34 @@ class LinkedList:
             To be implemented."""
         raise NotImplementedError
 
-    def insert_at_end(self, value):
-        
-        raise NotImplementedError
+    def insert_at_end(self, tf, value):
+        new_node = Node(value=value, tf=tf)
+        self.length += 1
+        n = self.start_node
+
+        if self.start_node is None:
+            self.start_node = new_node
+            self.end_node = new_node
+            return
+
+        elif self.start_node.value >= value:
+            self.start_node = new_node
+            self.start_node.next = n
+            return
+
+        elif self.end_node.value <= value:
+            self.end_node.next = new_node
+            self.end_node = new_node
+            return
+
+        else:
+            while n.value < value < self.end_node.value and n.next is not None:
+                n = n.next
+
+            m = self.start_node
+            while m.next != n and m.next is not None:
+                m = m.next
+            m.next = new_node
+            new_node.next = n
+        return
 
