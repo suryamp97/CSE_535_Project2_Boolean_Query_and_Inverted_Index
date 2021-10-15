@@ -152,28 +152,28 @@ class ProjectRunner:
         return output_dict
 
 
-@app.route("/execute_query", methods=['POST'])
-def execute_query():
-    """ This function handles the POST request to your endpoint.
-        Do NOT change it."""
-    start_time = time.time()
+# @app.route("/execute_query", methods=['POST'])
+# def execute_query():
+#     """ This function handles the POST request to your endpoint.
+#         Do NOT change it."""
+#     start_time = time.time()
 
-    queries = request.json["queries"]
-    random_command = request.json["random_command"]
+#     queries = request.json["queries"]
+#     random_command = request.json["random_command"]
 
-    """ Running the queries against the pre-loaded index. """
-    output_dict = runner.run_queries(queries, random_command)
+#     """ Running the queries against the pre-loaded index. """
+#     output_dict = runner.run_queries(queries, random_command)
 
-    """ Dumping the results to a JSON file. """
-    with open(output_location, 'w') as fp:
-        json.dump(output_dict, fp)
+#     """ Dumping the results to a JSON file. """
+#     with open(output_location, 'w') as fp:
+#         json.dump(output_dict, fp)
 
-    response = {
-        "Response": output_dict,
-        "time_taken": str(time.time() - start_time),
-        "username_hash": username_hash
-    }
-    return flask.jsonify(response)
+#     response = {
+#         "Response": output_dict,
+#         "time_taken": str(time.time() - start_time),
+#         "username_hash": username_hash
+#     }
+#     return flask.jsonify(response)
 
 
 if __name__ == "__main__":
@@ -183,6 +183,7 @@ if __name__ == "__main__":
     output_location = "project2_output.json"
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument("--corpus", type=str, help="Corpus File name, with path.")
+    parser.add_argument("--queries", type=str, help="Queries File name, with path.")
     parser.add_argument("--output_location", type=str, help="Output file name.", default=output_location)
     parser.add_argument("--username", type=str,
                         help="Your UB username. It's the part of your UB email id before the @buffalo.edu. "
@@ -191,6 +192,7 @@ if __name__ == "__main__":
     argv = parser.parse_args()
 
     corpus = argv.corpus
+    queries = argv.queries
     output_location = argv.output_location
     username_hash = hashlib.md5(argv.username.encode()).hexdigest()
 
@@ -200,5 +202,11 @@ if __name__ == "__main__":
     """ Index the documents from beforehand. When the API endpoint is hit, queries are run against 
         this pre-loaded in memory index. """
     runner.run_indexer(corpus)
+    queries = runner.run_indexer(queries)
+    output_dict = runner.run_queries(queries, "[0]")
 
+
+    with open(output_location, 'w') as fp:
+        json.dump(output_dict, fp)
+        
     #app.run(host="0.0.0.0", port=9999)
