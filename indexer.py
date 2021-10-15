@@ -18,13 +18,13 @@ class Indexer:
         return self.inverted_index
 
     def generate_inverted_index(self, doc_id, tokenized_document):
-        """ This function adds each tokenized document to the index. This in turn uses the function add_to_index
-            Already implemented."""
         for t in tokenized_document:
             self.add_to_index(t, doc_id)
 
     def add_to_index(self, term_, doc_id_):
-        
+        if term_ not in inverted_index:
+            inverted_index[term] = LinkedList()
+            inverted_index[term].insert_at_end(tf,value)
         raise NotImplementedError
 
     def sort_terms(self):
