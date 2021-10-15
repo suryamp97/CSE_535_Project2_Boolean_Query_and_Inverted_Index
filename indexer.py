@@ -19,7 +19,7 @@ class Indexer:
 
     def generate_inverted_index(self, doc_id, tokenized_document):
         tf_values = {}
-        n = len(tokenized_doc)
+        n = len(tokenized_document)
         for t in tokenized_document:
             if t not in tf_values:
                 tf_values[t] = 1
