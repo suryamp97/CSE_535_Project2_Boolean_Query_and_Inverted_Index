@@ -49,7 +49,24 @@ class LinkedList:
                 To be implemented."""
             raise NotImplementedError
             return traversal
-
+        
+    def traverse_list_extra(self):
+        traversal = []
+        if self.start_node is None:
+            print("List has no element")
+            return
+        else:
+            n = self.start_node
+            # Start traversal from head, and go on till you reach None
+            cnt = 1
+            while n is not None:
+                node_val = OrderedDict({"id":n.value, 
+                                        "tf":n.tf})
+                traversal.append(str(node_val)+"\n"+"\t"*cnt)
+                cnt += 1
+                n = n.next
+            return "->".join(traversal)
+        
     def add_skip_connections(self):
         n_skips = math.floor(math.sqrt(self.length))
         if n_skips * n_skips == self.length:
