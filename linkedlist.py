@@ -61,7 +61,7 @@ class LinkedList:
             cnt = 1
             while n is not None:
                 node_val = OrderedDict({"id":n.value, 
-                                        "tf":n.tf})
+                                        "tf_idf":n.tf_idf})
                 traversal.append(str(node_val)+"\n"+"\t"*cnt)
                 cnt += 1
                 n = n.next
@@ -80,7 +80,7 @@ class LinkedList:
         raise NotImplementedError
 
     def insert_at_end(self, tf, value):
-        new_node = Node(value=value, tf=tf)
+        new_node = Node(value=value, tf_idf=tf)
         self.length += 1
         n = self.start_node
 
