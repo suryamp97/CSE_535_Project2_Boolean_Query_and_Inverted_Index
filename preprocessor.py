@@ -20,7 +20,7 @@ class Preprocessor:
         """ Splits each line of the document, into doc_id & text.
             Already implemented"""
         arr = doc.split("\t")
-        return int(arr[0]), arr[1]
+        return int(float(arr[0])), arr[1]
 
     def tokenizer(self, text):
         tokenized_doc = text.lower()
