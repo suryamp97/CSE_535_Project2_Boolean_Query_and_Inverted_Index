@@ -26,7 +26,7 @@ class Indexer:
             else:
                 tf_values[t] += 1
         
-        for t in tokenized_document:
+        for t in tf_values:
             self.add_to_index(t, doc_id, tf_values[t])
 
     def add_to_index(self, term_, doc_id_,tf_):
@@ -56,4 +56,5 @@ class Indexer:
     def calculate_tf_idf(self):
         """ Calculate tf-idf score for each document in the postings lists of the index.
             To be implemented."""
+        
         raise NotImplementedError
