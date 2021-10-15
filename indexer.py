@@ -67,8 +67,8 @@ class Indexer:
                 h = plist.start_node
                 while h:
                     cur_tf = h.tf_idf
-                    print("old",h.value,h.tf_idf)
                     h.tf_idf = idf_ * cur_tf
+                    print("new",h.value,h.tf_idf)
                     h=h.next
 
         return
