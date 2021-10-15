@@ -38,6 +38,7 @@ class ProjectRunner:
         """ Implement the DAAT AND algorithm, which merges the postings list of N query terms.
             Use appropriate parameters & return types.
             To be implemented."""
+        
         raise NotImplementedError
 
     def _get_postings(self,term_):
@@ -107,6 +108,7 @@ class ProjectRunner:
                 3. Get the DAAT AND query results & number of comparisons with & without skip pointers.
                 4. Get the DAAT AND query results & number of comparisons with & without skip pointers, 
                     along with sorting by tf-idf scores."""
+            
             input_term_arr = self.preprocessor.tokenizer(query)  # Tokenized query. To be implemented.
             print(input_term_arr)
 
