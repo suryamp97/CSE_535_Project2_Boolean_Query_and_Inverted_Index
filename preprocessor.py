@@ -27,7 +27,7 @@ class Preprocessor:
         print("actual text",tokenized_doc)
         tokenized_doc = re.sub(r"[^a-zA-Z0-9]+", ' ', tokenized_doc)
         print("specialchar",tokenized_doc)
-#         re.sub(' +', ' ', tokenized_doc)
-#         print("extra space",tokenized_doc)
+        re.sub(' +', ' ', tokenized_doc)
+        print("extra space",tokenized_doc)
         
         return tokenized_doc
