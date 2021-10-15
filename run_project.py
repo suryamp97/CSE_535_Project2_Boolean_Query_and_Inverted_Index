@@ -33,7 +33,7 @@ class ProjectRunner:
             Use appropriate parameters & return types.
             While merging 2 postings list, preserve the maximum tf-idf value of a document.
             To be implemented."""
-        m_1 = []
+        m_l = []
         comparisons = 0
         if  not skip:
             pl1 = copy.deepcopy(plist1)
@@ -166,8 +166,7 @@ class ProjectRunner:
             and_op_skip,and_comparisons_skip        = self._daat_and(input_term_arr, True)
             
             and_op_no_skip_sorted, and_op_skip_sorted =  None, None
-            and_comparisons_skip, \
-                and_comparisons_no_skip_sorted, and_comparisons_skip_sorted =  None, None, None
+            and_comparisons_no_skip_sorted, and_comparisons_skip_sorted =   None, None
             """ Implement logic to populate initialize the above variables.
                 The below code formats your result to the required format.
                 To be implemented."""
