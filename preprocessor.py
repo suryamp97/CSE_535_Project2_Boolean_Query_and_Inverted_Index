@@ -24,13 +24,13 @@ class Preprocessor:
 
     def tokenizer(self, text):
         tokenized_doc = text.lower()
-        print("actual text",tokenized_doc)
+        #print("actual text",tokenized_doc)
         
         tokenized_doc = re.sub(r"[^a-zA-Z0-9]+", ' ', tokenized_doc)
-        print("specialchar",tokenized_doc)
+        #print("specialchar",tokenized_doc)
         
         re.sub(' +', ' ', tokenized_doc)
-        print("extra space",tokenized_doc)
+        #print("extra space",tokenized_doc)
         
         tokens = tokenized_doc.split()
         
@@ -42,5 +42,5 @@ class Preprocessor:
         
         final_tokens = tokens_stemmed
         
-        print("final token",final_tokens)
+        #print("final token",final_tokens)
         return final_tokens
