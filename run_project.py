@@ -107,7 +107,7 @@ class ProjectRunner:
             
         n_t = len(query_list)
         if not(skip or toSort):
-            print("ql",q_list)
+            print("ql",qlist)
             print("qdict",q_dict)
             print("final q list",query_list , n_t)
         tot_comp = 0
