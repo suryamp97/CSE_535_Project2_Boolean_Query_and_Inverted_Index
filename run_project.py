@@ -228,28 +228,28 @@ class ProjectRunner:
         return output_dict
 
 
-@app.route("/execute_query", methods=['POST'])
-def execute_query():
-    """ This function handles the POST request to your endpoint.
-        Do NOT change it."""
-    start_time = time.time()
+# @app.route("/execute_query", methods=['POST'])
+# def execute_query():
+#     """ This function handles the POST request to your endpoint.
+#         Do NOT change it."""
+#     start_time = time.time()
 
-    queries = request.json["queries"]
-    random_command = request.json["random_command"]
+#     queries = request.json["queries"]
+#     random_command = request.json["random_command"]
 
-    """ Running the queries against the pre-loaded index. """
-    output_dict = runner.run_queries(queries, random_command)
+#     """ Running the queries against the pre-loaded index. """
+#     output_dict = runner.run_queries(queries, random_command)
 
-    """ Dumping the results to a JSON file. """
-    with open(output_location, 'w') as fp:
-        json.dump(output_dict, fp)
+#     """ Dumping the results to a JSON file. """
+#     with open(output_location, 'w') as fp:
+#         json.dump(output_dict, fp)
 
-    response = {
-        "Response": output_dict,
-        "time_taken": str(time.time() - start_time),
-        "username_hash": username_hash
-    }
-    return flask.jsonify(response)
+#     response = {
+#         "Response": output_dict,
+#         "time_taken": str(time.time() - start_time),
+#         "username_hash": username_hash
+#     }
+#     return flask.jsonify(response)
 
 
 if __name__ == "__main__":
@@ -279,14 +279,14 @@ if __name__ == "__main__":
         this pre-loaded in memory index. """
     runner.run_indexer(corpus)
 
-#     with open(queries, 'r') as q:
-#         querylist= q.readlines()
+    with open(queries, 'r') as q:
+        querylist= q.readlines()
 
 
-#     output_dict = runner.run_queries(querylist, "[0]")
+    output_dict = runner.run_queries(querylist, "[0]")
 
 
-#     with open(output_location, 'w') as fp:
-#         json.dump(output_dict, fp)
+    with open(output_location, 'w') as fp:
+        json.dump(output_dict, fp)
         
-    app.run(host="0.0.0.0", port=9999)
+    #app.run(host="0.0.0.0", port=9999)
