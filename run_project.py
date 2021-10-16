@@ -118,8 +118,11 @@ class ProjectRunner:
                     tot_comp += comparisons
         
         temp_dict = {}
-        for t in m_l.traverse_list():
-            temp_dict[t] = m_l.tf_idf
+        tt = m_l.start_node
+        while tt:
+            temp_dict[tt.value] = tt.tf_idf
+            tt=tt.next
+            
             
         if toSort:
             m_res = LinkedList()
