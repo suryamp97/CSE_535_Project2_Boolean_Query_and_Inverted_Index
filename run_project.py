@@ -128,7 +128,7 @@ class ProjectRunner:
             m_res = []
             for k,v in sorted(temp_dict.items(), key=lambda item: item[1], reverse=True):
                 m_res.append(k)
-            return m_res
+            return m_res,tot_comp
         return m_l.traverse_list(), tot_comp
 
     def _get_postings(self,term_, toSkip):
