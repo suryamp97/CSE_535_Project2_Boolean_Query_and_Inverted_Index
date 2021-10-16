@@ -28,7 +28,7 @@ class ProjectRunner:
         self.preprocessor = Preprocessor()
         self.indexer = Indexer()
 
-    def _merge(self, plist1, plist2, skip, toSort):
+    def _merge(self, plist1, plist2, skip):
         """ Implement the merge algorithm to merge 2 postings list at a time.
             Use appropriate parameters & return types.
             While merging 2 postings list, preserve the maximum tf-idf value of a document.
@@ -82,11 +82,7 @@ class ProjectRunner:
                         p2 = p2.next
             #print("skipcomp: ",comparisons)
         m_l.add_skip_connections()
-        if toSort:
-            m_res = LinkedList()
-            for k,v in sorted(temp_dict.items(), key=lambda item: item[1], reverse=True):
-                m_res.insert_at_end(v,k)
-            m_l=m_res
+
 #         if not(skip or toSort):
 #             print("comp",comparisons)
 #             print("p1 len: ",len(plist1.traverse_list()),"p2 len: ",len(plist2.traverse_list()))
@@ -117,12 +113,16 @@ class ProjectRunner:
         else:          
             for i in range(1, n_t):               
                 if m_l:
-                    m_l, comparisons = self._merge(m_l, self.indexer.inverted_index[query_list[i]], skip, toSort)
+                    m_l, comparisons = self._merge(m_l, self.indexer.inverted_index[query_list[i]], skip)
                     tot_comp += comparisons
                 else:
-                    m_l, comparisons = self._merge(self.indexer.inverted_index[query_list[i-1]],self.indexer.inverted_index[query_list[i]], skip, toSort)
+                    m_l, comparisons = self._merge(self.indexer.inverted_index[query_list[i-1]],self.indexer.inverted_index[query_list[i]], skip)
                     tot_comp += comparisons
-        
+                if toSort:
+        m_res = LinkedList()
+        for k,v in sorted(temp_dict.items(), key=lambda item: item[1], reverse=True):
+            m_res.insert_at_end(v,k)
+        m_l=m_res
         return m_l.traverse_list(), tot_comp
 
     def _get_postings(self,term_, toSkip):
