@@ -125,10 +125,10 @@ class ProjectRunner:
             
             
         if toSort:
-            m_res = LinkedList()
+            m_res = []
             for k,v in sorted(temp_dict.items(), key=lambda item: item[1], reverse=True):
-                m_res.insert_at_end(v,k)
-            m_l=m_res
+                m_res.append(k)
+            return m_res
         return m_l.traverse_list(), tot_comp
 
     def _get_postings(self,term_, toSkip):
