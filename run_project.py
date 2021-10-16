@@ -78,17 +78,17 @@ class ProjectRunner:
                         print("p1<p2", "comparing" ,p1.value,p2.value)
                         if p1.skip and p1.skip.value <= p2.value:
                             while p1.skip and p1.skip.value <= p2.value:
-                                comparisons += 1
-                                print("p1 skip", "comparing" ,p1.value,p2.value)
+                                comparisons += 1     
                                 p1 = p1.skip
+                                print("p1 skip", "comparing" ,p1.value,p2.value)
                         else:
                             p1 = p1.next
                     
                     elif p2.skip and p2.skip.value <= p1.value:
                         while p2.skip and p2.skip.value <= p1.value:
                             comparisons += 1
-                            print("p2 skip", "comparing" ,p1.value,p2.value)
                             p2 = p2.skip
+                            print("p2 skip", "comparing" ,p1.value,p2.value)
                     else:
                         p2 = p2.next
             print("comp: ",comparisons)
