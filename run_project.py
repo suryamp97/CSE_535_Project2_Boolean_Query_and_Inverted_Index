@@ -90,7 +90,7 @@ class ProjectRunner:
                             p2 = p2.skip
                     else:
                         p2 = p2.next
-        print(comparisons)
+        print("comp: ",comparisons)
         if not toSort:
             m_l = m_l.traverse_list()
         else:
