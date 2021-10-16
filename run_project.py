@@ -203,7 +203,7 @@ class ProjectRunner:
             and_op_skip,and_comparisons_skip        = self._daat_and(input_term_arr, True, False) 
 
             and_op_no_skip_sorted, and_comparisons_no_skip_sorted = self._daat_and(input_term_arr, False, True)
-            and_op_skip_sorted, and_comparisons_skip_sorted =  None, None
+            and_op_skip_sorted, and_comparisons_skip_sorted =  self._daat_and(input_term_arr, True, True) 
             
             """ Implement logic to populate initialize the above variables.
                 The below code formats your result to the required format.
