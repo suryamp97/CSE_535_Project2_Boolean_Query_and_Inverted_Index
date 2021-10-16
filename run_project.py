@@ -89,7 +89,7 @@ class ProjectRunner:
             m_l=m_res
         if m_l:
             m_l.add_skip_connections()
-        if not (skip or toSort):
+        if skip and not toSort:
             print("comp",comparisons)
             print("p1 len: ",len(plist1.traverse_list()),"p2 len: ",len(plist2.traverse_list()))
             print(len(m_l.traverse_list()), len(list(set(plist1.traverse_list()) & set(plist2.traverse_list())) ))
@@ -99,7 +99,7 @@ class ProjectRunner:
     def _daat_and(self, query_list, skip, toSort):
         m_l = None
         n_t = len(query_list)
-        if not (skip or toSort):
+        if skip and not toSort:
             print(query_list , n_t)
         tot_comp = 0
         if n_t==1:
