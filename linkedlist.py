@@ -93,8 +93,8 @@ class LinkedList:
                     h_next = h_next.next
                     print("node ",h_next.value)
                 h_skip.skip = h_next
-                print("skip ",h_skip.value)
-        print(self.start_node.value)   
+                h_skip = h_skip.skip
+                print("skip ",h_skip.value) 
 
     def insert_at_end(self, tf, value):
         new_node = Node(value=value, tf_idf=tf)
