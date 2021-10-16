@@ -78,7 +78,9 @@ class LinkedList:
             This function does not return anything.
             To be implemented."""
         h_skip = self.start_node
+        print("skip ",h_skip.value)
         h_next = self.start_node
+        print("node ",h_next.value)
         if self.skip_length <= 1:
             return
         else:
@@ -89,7 +91,9 @@ class LinkedList:
                 while(skip_len>0):
                     skip_len -= 1
                     h_next = h_next.next
+                    print("node ",h_next.value)
                 h_skip.skip = h_next
+                print("skip ",h_skip.value)
                 
 
     def insert_at_end(self, tf, value):
