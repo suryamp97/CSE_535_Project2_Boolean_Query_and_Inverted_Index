@@ -76,7 +76,6 @@ class ProjectRunner:
                         if p1.skip and p1.skip.value <= p2.value:
                             while p1.skip and p1.skip.value <= p2.value:  
                                 p1 = p1.skip
-                                print("p1 skip", "comparing" ,p1.value,p2.value)
                         else:
                             p1 = p1.next
                     
