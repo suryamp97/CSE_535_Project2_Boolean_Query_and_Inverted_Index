@@ -55,7 +55,6 @@ class LinkedList:
                 while h is not None:
                     traversal.append(h.value)
                     h=h.skip
-            print(traversal)
             return traversal
         
     def traverse_list_extra(self):
