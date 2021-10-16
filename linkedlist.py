@@ -55,7 +55,7 @@ class LinkedList:
                 while h is not None:
                     traversal.append(h.value)
                     h=h.skip
-            
+            print(traversal)
             return traversal
         
     def traverse_list_extra(self):
@@ -85,9 +85,9 @@ class LinkedList:
             This function does not return anything.
             To be implemented."""
         h_skip = self.start_node
-        print("skip ",h_skip.value)
+        #print("skip ",h_skip.value)
         h_next = self.start_node
-        print("node ",h_next.value)
+        #print("node ",h_next.value)
         if self.skip_length <= 1:
             return
         else:
@@ -98,10 +98,10 @@ class LinkedList:
                 while(skip_len>0):
                     skip_len -= 1
                     h_next = h_next.next
-                    print("node ",h_next.value)
+                    #print("node ",h_next.value)
                 h_skip.skip = h_next
                 h_skip = h_skip.skip
-                print("skip ",h_skip.value) 
+                #print("skip ",h_skip.value) 
 
     def insert_at_end(self, tf, value):
         new_node = Node(value=value, tf_idf=tf)
