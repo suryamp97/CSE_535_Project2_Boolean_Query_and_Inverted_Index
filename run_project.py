@@ -66,7 +66,7 @@ class ProjectRunner:
                 while p1 and p2:
                     if p1.value == p2.value:
                         comparisons += 1
-                        print("=", comparing ,p1.value,p2.value)
+                        print("=", "comparing" ,p1.value,p2.value)
                         idf_ = max(p1.tf_idf, p2.tf_idf) 
                         m_l.insert_at_end(idf_,p1.value)
                         temp_dict[idf_] = p1.value
@@ -78,7 +78,7 @@ class ProjectRunner:
                         if p1.skip and p1.skip.value <= p2.value:
                             while p1.skip and p1.skip.value <= p2.value:
                                 comparisons += 1
-                                print("p1 skip", comparing ,p1.value,p2.value)
+                                print("p1 skip", "comparing" ,p1.value,p2.value)
                                 p1 = p1.skip
                         else:
                             p1 = p1.next
@@ -86,7 +86,7 @@ class ProjectRunner:
                     elif p2.skip and p2.skip.value <= p1.value:
                         while p2.skip and p2.skip.value <= p1.value:
                             comparisons += 1
-                            print("p2 skip", comparing ,p1.value,p2.value)
+                            print("p2 skip", "comparing" ,p1.value,p2.value)
                             p2 = p2.skip
                     else:
                         p2 = p2.next
