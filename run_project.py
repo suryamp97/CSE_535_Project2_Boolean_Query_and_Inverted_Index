@@ -58,6 +58,7 @@ class ProjectRunner:
                     else:
                         p2 = p2.next
                     comparisons += 1
+            print("nonskipcomp: ",comparisons)
         else:
             if pl1 is not None and pl2 is not None:
                 p1 = pl1.start_node
@@ -73,18 +74,19 @@ class ProjectRunner:
                         p2 = p2.next
 
                     elif p1.value < p2.value:
-                        if p1.skip and p1.skip.value <= p2.value:
-                            while p1.skip and p1.skip.value <= p2.value:  
+                        if p1.skip and (p1.skip.value <= p2.value):
+                            while p1.skip and (p1.skip.value <= p2.value):  
                                 p1 = p1.skip
                         else:
                             p1 = p1.next
                     
-                    elif p2.skip and p2.skip.value <= p1.value:
-                        while p2.skip and p2.skip.value <= p1.value:
+                    elif p2.skip and (p2.skip.value <= p1.value):
+                        while p2.skip and (p2.skip.value <= p1.value):
                             p2 = p2.skip
                     else:
                         p2 = p2.next
-            print("comp: ",comparisons)
+            print("skipcomp: ",comparisons)
+        print(len(temp_dict))
         if not toSort:
             m_l = m_l.traverse_list()
         else:
