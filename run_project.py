@@ -35,7 +35,7 @@ class ProjectRunner:
             To be implemented."""
         m_l = LinkedList()
         comparisons = 0
-        temp_dict = {}
+        
         pl1 = plist1
         pl2 = plist2
         p1 = pl1.start_node
@@ -46,7 +46,6 @@ class ProjectRunner:
                     if p1.value == p2.value:
                         idf_ = max(p1.tf_idf, p2.tf_idf) 
                         m_l.insert_at_end(idf_,p1.value)
-                        temp_dict[p1.value] = idf_
                         p1 = p1.next
                         p2 = p2.next
 
@@ -64,7 +63,6 @@ class ProjectRunner:
                     if p1.value == p2.value:
                         idf_ = max(p1.tf_idf, p2.tf_idf) 
                         m_l.insert_at_end(idf_,p1.value)
-                        temp_dict[p1.value] = idf_
                         p1 = p1.next
                         p2 = p2.next
 
@@ -118,6 +116,11 @@ class ProjectRunner:
                 else:
                     m_l, comparisons = self._merge(self.indexer.inverted_index[query_list[i-1]],self.indexer.inverted_index[query_list[i]], skip)
                     tot_comp += comparisons
+        
+        temp_dict = {}
+        for t in m_l.traverse_list():
+            temp_dict[t] = m_l.tf_idf
+            
         if toSort:
             m_res = LinkedList()
             for k,v in sorted(temp_dict.items(), key=lambda item: item[1], reverse=True):
