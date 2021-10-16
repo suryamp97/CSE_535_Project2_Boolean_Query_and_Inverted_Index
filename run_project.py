@@ -122,10 +122,7 @@ class ProjectRunner:
             
         self.indexer.sort_terms()
         print("inverted indices: ")
-#         for i in self.indexer.inverted_index.keys():
-#             lt = self.indexer.inverted_index[i].traverse_list_extra()
-#             print(i," ",lt)
-#         self.indexer.add_skip_connections()
+        self.indexer.add_skip_connections()
         self.indexer.calculate_tf_idf()
 
     def sanity_checker(self, command):
