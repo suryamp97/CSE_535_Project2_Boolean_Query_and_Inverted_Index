@@ -172,7 +172,7 @@ class ProjectRunner:
                     To be implemented."""
                 postings = self._get_postings(term, False)
                 skip_postings = self._get_postings(term, True)
-                #print(postings)
+                print(skip_postings)
                 
                 output_dict['postingsList'][term] = postings
                 output_dict['postingsListSkip'][term] = skip_postings
