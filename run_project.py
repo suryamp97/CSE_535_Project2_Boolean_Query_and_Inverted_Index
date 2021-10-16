@@ -118,11 +118,11 @@ class ProjectRunner:
                 else:
                     m_l, comparisons = self._merge(self.indexer.inverted_index[query_list[i-1]],self.indexer.inverted_index[query_list[i]], skip)
                     tot_comp += comparisons
-                if toSort:
-        m_res = LinkedList()
-        for k,v in sorted(temp_dict.items(), key=lambda item: item[1], reverse=True):
-            m_res.insert_at_end(v,k)
-        m_l=m_res
+        if toSort:
+            m_res = LinkedList()
+            for k,v in sorted(temp_dict.items(), key=lambda item: item[1], reverse=True):
+                m_res.insert_at_end(v,k)
+            m_l=m_res
         return m_l.traverse_list(), tot_comp
 
     def _get_postings(self,term_, toSkip):
