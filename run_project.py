@@ -87,8 +87,6 @@ class ProjectRunner:
             for k,v in sorted(temp_dict.items(), key=lambda item: item[1], reverse=True):
                 m_res.insert_at_end(v,k)
             m_l=m_res
-        if m_l:
-            m_l.add_skip_connections()
         if skip and not toSort:
             print("comp",comparisons)
             print("p1 len: ",len(plist1.traverse_list()),"p2 len: ",len(plist2.traverse_list()))
@@ -109,9 +107,11 @@ class ProjectRunner:
             for i in range(1, n_t):               
                 if m_l:
                     m_l, comparisons = self._merge(m_l, self.indexer.inverted_index[query_list[i]], skip, toSort)
+                    m_l.add_skip_connections()
                     tot_comp += comparisons
                 else:
                     m_l, comparisons = self._merge(self.indexer.inverted_index[query_list[i-1]],self.indexer.inverted_index[query_list[i]], skip, toSort)
+                    m_l.add_skip_connections()
                     tot_comp += comparisons
         
         return m_l.traverse_list(), tot_comp
