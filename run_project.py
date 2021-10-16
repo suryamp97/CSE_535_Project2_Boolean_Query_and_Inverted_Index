@@ -48,7 +48,7 @@ class ProjectRunner:
                     if p1.value == p2.value:
                         idf_ = max(p1.tf_idf, p2.tf_idf) 
                         m_l.insert_at_end(idf_,p1.value)
-                        temp_dict[idf_] = p1.value
+                        temp_dict[p1.value] = idf_
                         p1 = p1.next
                         p2 = p2.next
 
@@ -91,9 +91,9 @@ class ProjectRunner:
             m_l = m_l.traverse_list()
         else:
             m_res = []
-            for k in sorted(temp_dict.keys(),reverse=True):
+            for k,v in sorted(temp_dict.items(), key=lambda item: item[1], reverse=True):
                 #print(k,temp_dict[k])
-                m_res.append(temp_dict[k])
+                m_res.append(k)
             m_l=m_res
         #print(m_l)
         return m_l, comparisons
