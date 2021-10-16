@@ -36,10 +36,10 @@ class ProjectRunner:
         m_l = LinkedList()
         comparisons = 0
         temp_dict = {}
-        if  not skip:
-            pl1 = copy.deepcopy(plist1)
-            pl2 = copy.deepcopy(plist2)
-
+        pl1 = copy.deepcopy(plist1)
+        pl2 = copy.deepcopy(plist2)
+        
+        if not skip:
             if pl1 is not None and pl2 is not None:
                 p1 = pl1.start_node
                 p2 = pl2.start_node
@@ -57,10 +57,37 @@ class ProjectRunner:
 
                     else:
                         p2 = p2.next
-
                     comparisons += 1
         else:
-            return m_l.traverse_list(),comparisons
+            if pl1 is not None and pl2 is not None:
+                p1 = pl1.start_node
+                p2 = pl2.start_node
+                
+                while p1 and p2:
+                    if p1.value == p2.value:
+                        comparisons += 1
+                        idf_ = max(p1.tf_idf, p2.tf_idf) 
+                        m_l.insert_at_end(idf_,p1.value)
+                        temp_dict[idf_] = p1.value
+                        p1 = p1.next
+                        p2 = p2.next
+
+                    elif p1.value < p2.value:
+                        comparisons += 1
+                        if p1.skip and p1.skip.value <= p2.value:
+                            while p1.skip and p1.skip.value <= p2.value:
+                                comparisons += 1
+                                p1 = p1.skip
+                        else:
+                            p1 = p1.next
+                    
+                    elif p2.skip and p2.skip.value <= p1.value:
+                        while p2.skip and p2.skip.value <= p1.value:
+                            comparisons += 1
+                            p2 = p2.skip
+                    else:
+                        p2 = p2.next
+        
         if not toSort:
             m_l = m_l.traverse_list()
         else:
@@ -177,7 +204,7 @@ class ProjectRunner:
                 output_dict['postingsListSkip'][term] = skip_postings
 
             and_op_no_skip, and_comparisons_no_skip = self._daat_and(input_term_arr, False, False)
-            and_op_skip,and_comparisons_skip        = None,None  
+            and_op_skip,and_comparisons_skip        = self._daat_and(input_term_arr, True, False) 
 
             and_op_no_skip_sorted, and_comparisons_no_skip_sorted = self._daat_and(input_term_arr, False, True)
             and_op_skip_sorted, and_comparisons_skip_sorted =  None, None
