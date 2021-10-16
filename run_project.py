@@ -92,7 +92,7 @@ class ProjectRunner:
     def _daat_and(self, query_list, skip, toSort):
         m_l = None
         n_t = len(query_list)
-        if not (skip and toSort):
+        if not (skip or toSort):
             print(query_list , n_t)
         tot_comp = 0
         if n_t==1:
