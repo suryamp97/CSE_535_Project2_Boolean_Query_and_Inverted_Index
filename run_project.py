@@ -87,10 +87,13 @@ class ProjectRunner:
             for k,v in sorted(temp_dict.items(), key=lambda item: item[1], reverse=True):
                 m_res.insert_at_end(v,k)
             m_l=m_res
+        if m_l:
+            m_l.add_skip_connections()
         if not (skip or toSort):
             print("comp",comparisons)
             print("p1 len: ",len(plist1.traverse_list()),"p2 len: ",len(plist2.traverse_list()))
             print(len(m_l.traverse_list()), len(list(set(plist1.traverse_list()) & set(plist2.traverse_list())) ))
+        
         return m_l, comparisons
 
     def _daat_and(self, query_list, skip, toSort):
