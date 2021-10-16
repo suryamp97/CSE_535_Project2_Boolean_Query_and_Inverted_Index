@@ -16,6 +16,7 @@ class Node:
         self.value = value
         self.tf_idf = tf_idf
         self.next = next
+        self.skip = None
 
 
 class LinkedList:
