@@ -70,7 +70,7 @@ class ProjectRunner:
                 #print(k,temp_dict[k])
                 m_res.append(temp_dict[k])
             m_l=m_res
-        print(m_l)
+        #print(m_l)
         return m_l, comparisons
 
     def _daat_and(self, query_list, skip, toSort):
