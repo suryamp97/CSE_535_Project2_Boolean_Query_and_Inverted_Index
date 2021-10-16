@@ -92,7 +92,8 @@ class ProjectRunner:
     def _daat_and(self, query_list, skip, toSort):
         m_l = None
         n_t = len(query_list)
-        print(query_list , n_t)
+        if not (skip and toSort):
+            print(query_list , n_t)
         tot_comp = 0
         if n_t==1:
             p_l = self._get_postings(query_list[0])
@@ -101,11 +102,13 @@ class ProjectRunner:
             for i in range(1, n_t):               
                 if m_l:
                     m_l, comparisons = self._merge(m_l, self.indexer.inverted_index[query_list[i]], skip, toSort)
-                    print("nonempty: ", m_l.traverse_list())
+                    if not (skip and toSort):
+                        print("nonempty: ", m_l.traverse_list())
                     tot_comp += comparisons
                 else:
                     m_l, comparisons = self._merge(self.indexer.inverted_index[query_list[i-1]],self.indexer.inverted_index[query_list[i]], skip, toSort)
-                    print("empty: ", m_l.traverse_list())
+                    if not (skip and toSort):
+                        print("empty: ", m_l.traverse_list())
                     tot_comp += comparisons
         
         return m_l.traverse_list(), tot_comp
