@@ -48,7 +48,14 @@ class LinkedList:
         else:
             """ Write logic to traverse the linked list using skip pointers.
                 To be implemented."""
-            raise NotImplementedError
+            if self.skip_length<=1:
+                return traversal
+            else:
+                h = self.start_node
+                while h is not None:
+                    traversal.append(h.value)
+                    h=h.skip
+            
             return traversal
         
     def traverse_list_extra(self):
