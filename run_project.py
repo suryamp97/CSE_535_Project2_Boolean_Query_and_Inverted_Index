@@ -36,8 +36,8 @@ class ProjectRunner:
         m_l = LinkedList()
         comparisons = 0
         temp_dict = {}
-        pl1 = copy.deepcopy(plist1)
-        pl2 = copy.deepcopy(plist2)
+        pl1 = plist1
+        pl2 = plist2
         
         if not skip:
             if pl1 is not None and pl2 is not None:
