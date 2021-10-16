@@ -82,7 +82,7 @@ class LinkedList:
         if self.skip_length <= 1:
             return
         else:
-            skips = self.n_skip
+            skips = self.n_skips
             while (skips>0):
                 skips -= 1
                 skip_len = self.skip_length
