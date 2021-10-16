@@ -36,14 +36,14 @@ class ProjectRunner:
         m_l = LinkedList()
         comparisons = 0
         temp_dict = {}
+        print(type(plist1))
         pl1 = plist1
         pl2 = plist2
-        
+        print(type(pl1))
+        p1 = pl1.start_node
+        p2 = pl2.start_node
         if not skip:
             if pl1 is not None and pl2 is not None:
-                p1 = pl1.start_node
-                p2 = pl2.start_node
-
                 while p1 and p2:
                     if p1.value == p2.value:
                         idf_ = max(p1.tf_idf, p2.tf_idf) 
@@ -60,10 +60,7 @@ class ProjectRunner:
                     comparisons += 1
             print("nonskipcomp: ",comparisons)
         else:
-            if pl1 is not None and pl2 is not None:
-                p1 = pl1.start_node
-                p2 = pl2.start_node
-                
+            if pl1 is not None and pl2 is not None:       
                 while p1 and p2:
                     comparisons += 1
                     if p1.value == p2.value:
