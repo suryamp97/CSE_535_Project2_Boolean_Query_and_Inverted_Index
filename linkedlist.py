@@ -8,7 +8,7 @@ from collections import OrderedDict
 
 class Node:
 
-    def __init__(self, value=None, next=None, tf_idf=None):
+    def __init__(self, value=None, next=None, tf_idf=None, skip=None):
         """ Class to define the structure of each node in a linked list (postings list).
             Value: document id, Next: Pointer to the next node
             Add more parameters if needed.
@@ -16,7 +16,7 @@ class Node:
         self.value = value
         self.tf_idf = tf_idf
         self.next = next
-        self.skip = None
+        self.skip = skip
 
 
 class LinkedList:
@@ -77,8 +77,8 @@ class LinkedList:
         """ Write logic to add skip pointers to the linked list. 
             This function does not return anything.
             To be implemented."""
-        
-        raise NotImplementedError
+        n = self.start_node
+        print(self.n_skips,self.skip_length)
 
     def insert_at_end(self, tf, value):
         new_node = Node(value=value, tf_idf=tf)
