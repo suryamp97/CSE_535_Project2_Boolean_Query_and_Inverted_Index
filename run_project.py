@@ -89,7 +89,7 @@ class ProjectRunner:
             m_l=m_res
         if not (skip or toSort):
             print("comp",comparisons)
-            print(len(m_l), len(list(set(plist1.traverse_list()) & set(plist2.traverse_list()))))
+            print(len(m_l), list(set(plist1.traverse_list()) & set(plist2.traverse_list()) ))
         return m_l, comparisons
 
     def _daat_and(self, query_list, skip, toSort):
