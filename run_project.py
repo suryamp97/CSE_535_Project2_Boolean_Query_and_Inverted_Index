@@ -69,7 +69,7 @@ class ProjectRunner:
                     if p1.value == p2.value:
                         idf_ = max(p1.tf_idf, p2.tf_idf) 
                         m_l.insert_at_end(idf_,p1.value)
-                        temp_dict[idf_] = p1.value
+                        temp_dict[p1.value] = idf_
                         p1 = p1.next
                         p2 = p2.next
 
