@@ -81,7 +81,7 @@ class ProjectRunner:
                     else:
                         p2 = p2.next
             #print("skipcomp: ",comparisons)
-        
+        m_l.add_skip_connections()
         if toSort:
             m_res = LinkedList()
             for k,v in sorted(temp_dict.items(), key=lambda item: item[1], reverse=True):
@@ -91,7 +91,7 @@ class ProjectRunner:
 #             print("comp",comparisons)
 #             print("p1 len: ",len(plist1.traverse_list()),"p2 len: ",len(plist2.traverse_list()))
 
-        m_l.add_skip_connections()
+
         return m_l, comparisons
 
     def _daat_and(self, qlist, skip, toSort):
