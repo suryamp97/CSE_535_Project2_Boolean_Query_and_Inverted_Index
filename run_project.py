@@ -88,7 +88,8 @@ class ProjectRunner:
                 m_res.insert_at_end(v,k)
             m_l=m_res
         if not (skip or toSort):
-            print(comparisons)
+            print("comp",comparisons)
+            print(len(m_l), len(list(set(plist1.traverse_list()) & set(plist2.traverse_list()))))
         return m_l, comparisons
 
     def _daat_and(self, query_list, skip, toSort):
