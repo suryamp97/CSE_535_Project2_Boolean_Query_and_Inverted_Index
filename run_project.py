@@ -92,13 +92,17 @@ class ProjectRunner:
         
         return m_l, tot_comparisons
 
-    def _get_postings(self,term_):
+    def _get_postings(self,term_, toSkip):
         """ Function to get the postings list of a term from the index.
             Use appropriate parameters & return types.
             To be implemented."""
         postings_list = []
+
         if term_ in self.indexer.inverted_index:
-            postings_list=self.indexer.inverted_index[term_].traverse_list()
+            if not toSkip:
+                postings_list=self.indexer.inverted_index[term_].traverse_list()
+            else:
+                postings_list=self.indexer.inverted_index[term_].traverse_skips()
         return postings_list
 
     def _output_formatter(self, op):
@@ -166,7 +170,8 @@ class ProjectRunner:
                 """ Implement logic to populate initialize the above variables.
                     The below code formats your result to the required format.
                     To be implemented."""
-                postings = self._get_postings(term)
+                postings = self._get_postings(term, False)
+                skip_postings = self._get_postings(term, True)
                 #print(postings)
                 
                 output_dict['postingsList'][term] = postings
