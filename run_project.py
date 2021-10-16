@@ -98,15 +98,17 @@ class ProjectRunner:
         m_l = None
         q_dict={}
         query_list = []
-        print("ql",q_list)
+        
         for q in qlist:
             q_dict[q]= self.indexer.inverted_index[q].length
-        print("qdict",q_dict)
+        
         for k,v in sorted(q_dict.items(), key=lambda item: item[1]):
             query_list.append(k)
             
         n_t = len(query_list)
-        if not(skip or toSort)::
+        if not(skip or toSort):
+            print("ql",q_list)
+            print("qdict",q_dict)
             print("final q list",query_list , n_t)
         tot_comp = 0
         if n_t==1:
