@@ -89,6 +89,7 @@ class ProjectRunner:
             m_l=m_res
         if not (skip or toSort):
             print("comp",comparisons)
+            print("p1 len: ",len(plist1.traverse_list()),"p2 len: ",len(plist1.traverse_list()))
             print(len(m_l.traverse_list()), len(list(set(plist1.traverse_list()) & set(plist2.traverse_list())) ))
         return m_l, comparisons
 
