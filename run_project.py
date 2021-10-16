@@ -94,8 +94,16 @@ class ProjectRunner:
         
         return m_l, comparisons
 
-    def _daat_and(self, query_list, skip, toSort):
+    def _daat_and(self, qlist, skip, toSort):
         m_l = None
+        q_dict={}
+        query_list = []
+        for q in qlist:
+            q_dict[q]= self.inverted_index[q].length
+        
+        for k,v in sorted(q_dict.items(), key=lambda item: item[1]):
+            query_list.append(k)
+            
         n_t = len(query_list)
         if skip and not toSort:
             print(query_list , n_t)
