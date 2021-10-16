@@ -66,6 +66,7 @@ class ProjectRunner:
                 while p1 and p2:
                     if p1.value == p2.value:
                         comparisons += 1
+                        print("=", comparing ,p1.value,p2.value)
                         idf_ = max(p1.tf_idf, p2.tf_idf) 
                         m_l.insert_at_end(idf_,p1.value)
                         temp_dict[idf_] = p1.value
@@ -77,6 +78,7 @@ class ProjectRunner:
                         if p1.skip and p1.skip.value <= p2.value:
                             while p1.skip and p1.skip.value <= p2.value:
                                 comparisons += 1
+                                print("p1 skip", comparing ,p1.value,p2.value)
                                 p1 = p1.skip
                         else:
                             p1 = p1.next
@@ -84,6 +86,7 @@ class ProjectRunner:
                     elif p2.skip and p2.skip.value <= p1.value:
                         while p2.skip and p2.skip.value <= p1.value:
                             comparisons += 1
+                            print("p2 skip", comparing ,p1.value,p2.value)
                             p2 = p2.skip
                     else:
                         p2 = p2.next
@@ -100,7 +103,6 @@ class ProjectRunner:
         return m_l, comparisons
 
     def _daat_and(self, query_list, skip, toSort):
-        print(query_list)
         n_t = len(query_list)
         m_l = []
         tot_comparisons = 0
@@ -198,7 +200,6 @@ class ProjectRunner:
                     To be implemented."""
                 postings = self._get_postings(term, False)
                 skip_postings = self._get_postings(term, True)
-                print(skip_postings)
                 
                 output_dict['postingsList'][term] = postings
                 output_dict['postingsListSkip'][term] = skip_postings
