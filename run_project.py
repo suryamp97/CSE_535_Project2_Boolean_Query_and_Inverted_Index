@@ -75,6 +75,7 @@ class ProjectRunner:
 
                     elif p1.value < p2.value:
                         comparisons += 1
+                        print("p1<p2", "comparing" ,p1.value,p2.value)
                         if p1.skip and p1.skip.value <= p2.value:
                             while p1.skip and p1.skip.value <= p2.value:
                                 comparisons += 1
