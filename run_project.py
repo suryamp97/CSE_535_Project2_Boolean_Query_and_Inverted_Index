@@ -91,7 +91,7 @@ class ProjectRunner:
 #             print("comp",comparisons)
 #             print("p1 len: ",len(plist1.traverse_list()),"p2 len: ",len(plist2.traverse_list()))
 
-        
+        m_l.add_skip_connections()
         return m_l, comparisons
 
     def _daat_and(self, qlist, skip, toSort):
@@ -118,11 +118,9 @@ class ProjectRunner:
             for i in range(1, n_t):               
                 if m_l:
                     m_l, comparisons = self._merge(m_l, self.indexer.inverted_index[query_list[i]], skip, toSort)
-                    m_l.add_skip_connections()
                     tot_comp += comparisons
                 else:
                     m_l, comparisons = self._merge(self.indexer.inverted_index[query_list[i-1]],self.indexer.inverted_index[query_list[i]], skip, toSort)
-                    m_l.add_skip_connections()
                     tot_comp += comparisons
         
         return m_l.traverse_list(), tot_comp
