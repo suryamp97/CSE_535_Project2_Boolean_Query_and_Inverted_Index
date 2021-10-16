@@ -52,7 +52,6 @@ class Indexer:
         """ For each postings list in the index, add skip pointers.
             To be implemented."""
         for term in self.inverted_index:
-            print(term)
             plist = self.inverted_index[term]
             if plist:
                 plist.add_skip_connections()
