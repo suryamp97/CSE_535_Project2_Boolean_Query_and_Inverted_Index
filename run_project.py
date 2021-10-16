@@ -87,10 +87,10 @@ class ProjectRunner:
             for k,v in sorted(temp_dict.items(), key=lambda item: item[1], reverse=True):
                 m_res.insert_at_end(v,k)
             m_l=m_res
-        if not(skip or toSort):
-            print("comp",comparisons)
-            print("p1 len: ",len(plist1.traverse_list()),"p2 len: ",len(plist2.traverse_list()))
-            print(len(m_l.traverse_list()), len(list(set(plist1.traverse_list()) & set(plist2.traverse_list())) ))
+#         if not(skip or toSort):
+#             print("comp",comparisons)
+#             print("p1 len: ",len(plist1.traverse_list()),"p2 len: ",len(plist2.traverse_list()))
+
         
         return m_l, comparisons
 
@@ -106,10 +106,10 @@ class ProjectRunner:
             query_list.append(k)
             
         n_t = len(query_list)
-        if not(skip or toSort):
-            print("ql",qlist)
-            print("qdict",q_dict)
-            print("final q list",query_list , n_t)
+#         if not(skip or toSort):
+#             print("ql",qlist)
+#             print("qdict",q_dict)
+#             print("final q list",query_list , n_t)
         tot_comp = 0
         if n_t==1:
             p_l = self._get_postings(query_list[0])
