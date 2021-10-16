@@ -82,9 +82,7 @@ class ProjectRunner:
                         p2 = p2.next
             #print("skipcomp: ",comparisons)
         
-        if not toSort:
-            return m_l, comparisons
-        else:
+        if toSort:
             m_res = LinkedList()
             for k,v in sorted(temp_dict.items(), key=lambda item: item[1], reverse=True):
                 m_res.insert_at_end(v,k)
