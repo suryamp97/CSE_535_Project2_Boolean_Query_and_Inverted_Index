@@ -52,8 +52,10 @@ class Indexer:
         """ For each postings list in the index, add skip pointers.
             To be implemented."""
         for term in self.inverted_index:
+            print(term)
             plist = self.inverted_index[term]
-            plist.add_skip_connections()
+            if plist:
+                plist.add_skip_connections()
 
     def calculate_tf_idf(self):
         """ Calculate tf-idf score for each document in the postings lists of the index.
