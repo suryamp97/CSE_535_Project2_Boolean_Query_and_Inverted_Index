@@ -89,7 +89,7 @@ class ProjectRunner:
             for k,v in sorted(temp_dict.items(), key=lambda item: item[1], reverse=True):
                 m_res.insert_at_end(v,k)
             m_l=m_res
-        #print(m_l)
+        print(type(m_l))
         return m_l, comparisons
 
     def _daat_and(self, query_list, skip, toSort):
