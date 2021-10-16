@@ -36,10 +36,8 @@ class ProjectRunner:
         m_l = LinkedList()
         comparisons = 0
         temp_dict = {}
-        print(type(plist1))
         pl1 = plist1
         pl2 = plist2
-        print(type(pl1))
         p1 = pl1.start_node
         p2 = pl2.start_node
         if not skip:
@@ -58,7 +56,7 @@ class ProjectRunner:
                     else:
                         p2 = p2.next
                     comparisons += 1
-            print("nonskipcomp: ",comparisons)
+            #print("nonskipcomp: ",comparisons)
         else:
             if pl1 is not None and pl2 is not None:       
                 while p1 and p2:
@@ -82,10 +80,10 @@ class ProjectRunner:
                             p2 = p2.skip
                     else:
                         p2 = p2.next
-            print("skipcomp: ",comparisons)
-        print(len(temp_dict))
+            #print("skipcomp: ",comparisons)
+        
         if not toSort:
-            m_l = m_l.traverse_list()
+            return m_l
         else:
             m_res = []
             for k,v in sorted(temp_dict.items(), key=lambda item: item[1], reverse=True):
@@ -96,22 +94,22 @@ class ProjectRunner:
         return m_l, comparisons
 
     def _daat_and(self, query_list, skip, toSort):
+        m_l = None
         n_t = len(query_list)
-        m_l = []
-        tot_comparisons = 0
+        tot_comp = 0
         if n_t==1:
             p_l = self._get_postings(query_list[0])
             return p_l
         else:          
             for i in range(1, n_t):               
-                if len(m_l)!=0:
+                if m_l:
                     m_l, comparisons = self._merge(m_l, self.indexer.inverted_index[query_list[i]], skip, toSort)
-                    tot_comparisons += comparisons
+                    tot_comp += comparisons
                 else:
                     m_l, comparisons = self._merge(self.indexer.inverted_index[query_list[i-1]],self.indexer.inverted_index[query_list[i]], skip, toSort)
-                    tot_comparisons += comparisons
+                    tot_comp += comparisons
         
-        return m_l, tot_comparisons
+        return m_l, tot_comp
 
     def _get_postings(self,term_, toSkip):
         """ Function to get the postings list of a term from the index.
